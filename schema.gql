@@ -1,0 +1,108 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Achievement {
+  id: ID!
+  text: String!
+}
+
+type Experience {
+  achievements: [Achievement!]!
+  company: String!
+  id: ID!
+  location: String!
+  period: ExperiencePeriod!
+  position: String!
+  summary: String
+}
+
+"""Employment period with month precision"""
+type ExperiencePeriod {
+  """Length in calendar months, first and last month included"""
+  durationMonths: Int!
+
+  """Last month, YYYY-MM, null while the job is current"""
+  end: String
+
+  """True while the job is current"""
+  isCurrent: Boolean!
+
+  """
+  Human readable period, for example "Jun 2018 - Jul 2026"
+  """
+  label: String!
+
+  """First month, YYYY-MM"""
+  start: String!
+}
+
+"""Link to a professional resource"""
+type Link {
+  id: ID!
+  kind: LinkKind!
+  label: String!
+  url: String!
+}
+
+enum LinkKind {
+  EMAIL
+  GITHUB
+  GITLAB
+  LINKEDIN
+  WEBSITE
+}
+
+"""Public profile of the engineer"""
+type Profile {
+  """Short introduction"""
+  description: String!
+
+  """Work history, most recent first"""
+  experience: [Experience!]!
+
+  """One-line professional headline"""
+  headline: String!
+  id: ID!
+  links: [Link!]!
+  location: String!
+  name: String!
+  projects: [Project!]!
+  skills: [Skill!]!
+}
+
+type Project {
+  description: String!
+  id: ID!
+
+  """Closed company project without public source code"""
+  isPrivate: Boolean!
+  name: String!
+
+  """Public source code, null for private projects"""
+  repositoryUrl: String
+  technologies: [String!]!
+
+  """Public page of the project, or the company site for a private project"""
+  url: String
+}
+
+type Query {
+  """Business card owner"""
+  profile: Profile!
+}
+
+type Skill {
+  category: SkillCategory!
+  id: ID!
+  name: String!
+}
+
+enum SkillCategory {
+  AI
+  BACKEND
+  CLOUD_AND_TESTING
+  CMS_AND_WEB
+  DATA_AND_MESSAGING
+  PAYMENTS_AND_GROWTH
+}
