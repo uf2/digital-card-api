@@ -69,6 +69,7 @@ Requirements: Node.js 24 (see `.nvmrc`), npm 11, Docker.
 
 ```bash
 cp .env.example .env
+cp .env.test.example .env.test   # separate database for e2e tests
 docker compose up -d db        # PostgreSQL on localhost:5433
 npm ci                         # also runs prisma generate
 npm run build
@@ -81,7 +82,7 @@ Checks:
 ```bash
 npm run lint
 npm test                       # unit tests
-npm run test:e2e               # e2e tests, need the database from docker compose
+npm run test:e2e               # e2e tests on digital_card_test, need the database from docker compose
 ```
 
 ## Project structure
@@ -103,7 +104,7 @@ src/
   project/                     projects
   database/seed/               seed data, seed service and its entry point
   health/                      GET /health
-test/                          e2e tests against a real PostgreSQL
+test/                          e2e tests against a real PostgreSQL test database
 docker-entrypoint.sh           migrate, seed, start
 render.yaml                    Render blueprint: web service + PostgreSQL
 ```
@@ -176,7 +177,7 @@ The Apollo Sandbox landing page and introspection are on in every environment, b
 ## Tests
 
 - **Unit** (`src/**/*.spec.ts`): employment period and duration.
-- **E2E** (`test/`): the app runs against a real PostgreSQL. The tests cover the example query from the task, the SQL query count, period and order of jobs, project links, repeated seeding, the Sandbox page and the health check.
+- **E2E** (`test/`): the app runs against a real PostgreSQL. The tests cover the example query from the task, the SQL query count, period and order of jobs, project links, repeated seeding, the Sandbox page and the health check. They use their own database `digital_card_test` from `.env.test`: the global setup creates it with `prisma migrate deploy` if needed and refuses to run on a database whose name does not end in `_test`, so the development data is never touched.
 
 ## Deployment
 

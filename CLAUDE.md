@@ -7,7 +7,7 @@ Digital business card API: NestJS 12 (ESM), GraphQL code-first (Apollo 5), Prism
 - `docker compose up -d db` starts PostgreSQL on localhost:5433 (see `.env.example`).
 - `npm run build` generates the Prisma client and compiles to `dist`.
 - `npm run db:setup` applies migrations and runs the compiled seed from `dist`, so run `npm run build` first after editing seed data.
-- `npm run lint`, `npm test`, `npm run test:e2e` (e2e needs the database).
+- `npm run lint`, `npm test`, `npm run test:e2e` (e2e needs the database and `.env.test`, copied from `.env.test.example`; it uses `digital_card_test`).
 
 ## Conventions
 
