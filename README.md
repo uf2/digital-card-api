@@ -4,7 +4,7 @@ A backend service that presents me, Vladimir Fedorovykh, as a backend engineer. 
 
 Stack: TypeScript, Node.js 24, NestJS 12, GraphQL (Apollo Server 5, code-first), Prisma 7, PostgreSQL 17, Docker, Vitest.
 
-- Live Sandbox: not deployed yet
+- Live Sandbox: https://digital-card-api-5xg9.onrender.com/graphql (free Render plan: after idle time the first request can take about a minute, because the service starts, applies migrations and seeds)
 - Source code: https://github.com/uf2/digital-card-api
 
 ## Quick start

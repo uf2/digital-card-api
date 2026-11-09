@@ -139,7 +139,7 @@ export const profileSeed: ProfileSeed = {
       name: 'Digital business card API',
       description:
         'This service: NestJS, GraphQL (Apollo), Prisma and PostgreSQL, packed in Docker, with batched loading of nested data.',
-      url: null,
+      url: 'https://digital-card-api-5xg9.onrender.com/graphql',
       repositoryUrl: 'https://github.com/uf2/digital-card-api',
       isPrivate: false,
       technologies: ['NestJS', 'GraphQL', 'Prisma', 'PostgreSQL', 'Docker'],
